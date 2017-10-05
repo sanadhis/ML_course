@@ -2,8 +2,6 @@
 """ Grid Search"""
 
 import numpy as np
-import costs
-
 
 def generate_w(num_intervals):
     """Generate a grid of values for w0 and w1."""
@@ -16,18 +14,6 @@ def get_best_parameters(w0, w1, losses):
     """Get the best w from the result of grid search."""
     min_row, min_col = np.unravel_index(np.argmin(losses), losses.shape)
     return losses[min_row, min_col], w0[min_row], w1[min_col]
-
-
-def compute_loss(y, tx, w):
-    """Calculate the loss.
-
-    You can calculate the loss using mse or mae.
-    """
-    N = y.shape[0]
-    dyf = y - tx.dot(w)
-    mse = np.sum(dyf*dyf)/(2*N)
-    
-    return mse
 
 def grid_search(y, tx, w0, w1):
     """Algorithm for grid search."""
