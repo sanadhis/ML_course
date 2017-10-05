@@ -2,6 +2,7 @@
 """ Grid Search"""
 
 import numpy as np
+from costs import *
 
 def generate_w(num_intervals):
     """Generate a grid of values for w0 and w1."""
@@ -21,6 +22,6 @@ def grid_search(y, tx, w0, w1):
     for i in range(losses.shape[0]):
         for j in range(losses.shape[1]):
             w = np.array([w0[i],w1[j]])
-            losses[i][j] = compute_loss(y,tx,w)
+            losses[i][j] = compute_mse(y,tx,w)
             
     return losses
