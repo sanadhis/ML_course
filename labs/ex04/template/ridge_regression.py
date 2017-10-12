@@ -12,5 +12,11 @@ def ridge_regression(y, tx, lambda_):
     # ***************************************************
     # INSERT YOUR CODE HERE
     # ridge regression: TODO
+    M = tx.shape[1]
+    I = np.identity(M)
+    a = np.dot(np.transpose(tx),tx) + 2*len(y)*lambda_*I
+    b = np.dot(np.transpose(tx),y)
+    w = np.linalg.solve(a,b)
     # ***************************************************
-    raise NotImplementedError
+    #raise NotImplementedError
+    return w
